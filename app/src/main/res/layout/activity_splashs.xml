@@ -21,14 +21,14 @@
         android:maxWidth="10dp"
         android:maxHeight="10dp"
         android:scaleType="fitCenter"
-        android:src="" />
+        android:src="@drawable/gadi" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView"
         android:textAlignment="center"
-        android:fontFamily=""
+        android:fontFamily="@drawable/gadi"
         android:textColor="#FFFFFF"
         android:layout_marginBottom="20dp"
         android:text="Designed by Shrishak Shrestha"/>
