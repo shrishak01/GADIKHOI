@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "416715142104",
+    "firebase_url": "https://gadikhoi.firebaseio.com",
+    "project_id": "gadikhoi",
+    "storage_bucket": "gadikhoi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416715142104:android:5cdfedb9585f18821978ad",
+        "android_client_info": {
+          "package_name": "com.shrishak.gadikhoi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416715142104-h7tdj2gjdr0bqkg0l4t3p01ttclj4g7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKMHE6L62cT4TxRJYN5WzGjIGoq2KgzzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416715142104-h7tdj2gjdr0bqkg0l4t3p01ttclj4g7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
