@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GADIKHOI</string>
+    <string name="txt_main">Welcome, Gadikhoi is created to help user see nearby bus-stop and buses and its routes.It shows the nearby stops in maps and user can select the stop and it will provide direction on google maps. The app was created to help user as it is hard to keep track and remember all the buses that are available and their routes they travel. This app makes it easy for the user to keep track of all the available bus and mini bus data  </string>
 </resources>
