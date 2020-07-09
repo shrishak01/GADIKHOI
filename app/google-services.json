@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:416715142104:android:5cdfedb9585f18821978ad",
+        "mobilesdk_app_id": "1:416715142104:android:07b6a35c5d71d1791978ad",
         "android_client_info": {
           "package_name": "com.shrishak.gadikhoi"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "416715142104-7es750ifkjv8bjv2bmco05e9mt26jq8c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shrishak.gadikhoi",
+            "certificate_hash": "1e0b79334660394e3c66a655bf76ebc3b839d7ad"
+          }
+        },
         {
           "client_id": "416715142104-h7tdj2gjdr0bqkg0l4t3p01ttclj4g7r.apps.googleusercontent.com",
           "client_type": 3
