@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Mainactivity"
     android:background="@color/darkMode"
     android:orientation="vertical">
 
@@ -102,19 +102,17 @@
 
                     <androidx.cardview.widget.CardView
 
-                        android:id="@+id/item1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardBackgroundColor="#695780"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="0dp">
+                        app:cardCornerRadius="10dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:id="@+id/button3"
+                                android:id="@+id/driver"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -163,18 +161,16 @@
                     android:gravity="center">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/item2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardBackgroundColor="#695780"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="0dp">
+                        app:cardCornerRadius="10dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center">
                             <LinearLayout
-                                android:id="@+id/button4"
+                                android:id="@+id/passenger"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical"
