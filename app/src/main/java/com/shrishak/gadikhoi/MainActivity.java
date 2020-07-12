@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         driver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,Activity_login.class);
+                Intent i = new Intent(MainActivity.this, DriverLoginActivity.class);
                 startActivity(i);
             }
         });
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         passenger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,Activity_login.class);
+                Intent i = new Intent(MainActivity.this, DriverLoginActivity.class);
                 startActivity(i);
             }
         });

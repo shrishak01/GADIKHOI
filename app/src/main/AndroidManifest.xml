@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity_register"></activity>
-        <activity android:name=".Activity_login" />
+        <activity android:name=".DriverLoginActivity" />
         <activity android:name=".Splashs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
