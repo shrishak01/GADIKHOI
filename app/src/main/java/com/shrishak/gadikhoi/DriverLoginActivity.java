@@ -31,7 +31,10 @@ public class DriverLoginActivity<txtsignup> extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-
+                    Intent intent = new Intent(DriverLoginActivity.this, DriverLoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return;
                 }
             }
         };
@@ -40,6 +43,7 @@ public class DriverLoginActivity<txtsignup> extends AppCompatActivity {
         password_login = (EditText) findViewById(R.id.password_login);
 
         button_signin = (Button) findViewById(R.id.button_signin);
+        txtSignup = (TextView) findViewById(R.id.txtSignUp);
 
 
     }
