@@ -83,7 +83,7 @@ public class Activity_register_driver extends AppCompatActivity {
                                 Toast.makeText(Activity_register_driver.this.getApplicationContext(), "Signup unsuccessful:", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Activity_register_driver.this.getApplicationContext(), "Signup successful: Please loginin to access our services", Toast.LENGTH_SHORT).show();
-                                String user_id = mAuth.getCurrentUser().getUid();
+                                String user_id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id);
                                 current_user_db.setValue(true);
                                 startActivity(new Intent(Activity_register_driver.this, DriverLoginActivity.class));
