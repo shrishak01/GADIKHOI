@@ -4,18 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverLoginActivity">
+    tools:context=".Activity_register">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@color/darkMode"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
         app:cardPreventCornerOverlap="false">
         <ScrollView
             android:layout_width="wrap_content"

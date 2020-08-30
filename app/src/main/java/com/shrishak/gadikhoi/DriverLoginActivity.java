@@ -43,7 +43,26 @@ public class DriverLoginActivity extends AppCompatActivity {
         password_login = (EditText) findViewById(R.id.password_login);
 
         button_signin = (Button) findViewById(R.id.button_signin);
+
+
+
+
+
+
+
+
+
+
+
+
         txtSignup = (TextView) findViewById(R.id.txtSignUp);
+        txtSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DriverLoginActivity.this, Activity_register.class);
+                startActivity(i);
+            }
+        });
 
 
     }
