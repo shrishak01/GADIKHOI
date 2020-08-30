@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Activity_register extends AppCompatActivity {
     private EditText res_username, res_password, res_check_password,email;
@@ -34,7 +36,7 @@ public class Activity_register extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user!=null){
+                if (user != null) {
                     Intent intent = new Intent(Activity_register.this, DriverLoginActivity.class);
                     startActivity(intent);
                     finish();
@@ -71,23 +73,24 @@ public class Activity_register extends AppCompatActivity {
                     res_username.requestFocus();
                 } else if (emailID.isEmpty() && paswd.isEmpty() && user_name.isEmpty() && conpaswd.isEmpty()) {
                     Toast.makeText(Activity_register.this, "Please fill everything!", Toast.LENGTH_SHORT).show();
-                } else if (!(emailID.isEmpty() && paswd.isEmpty() && user_name.isEmpty() && conpaswd.isEmpty())){
+                } else if (!(emailID.isEmpty() && paswd.isEmpty() && user_name.isEmpty() && conpaswd.isEmpty())) {
                     mAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(Activity_register.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(Activity_register.this.getApplicationContext(), "Signup unsuccesfull:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                String user_id =
+                                String user_id = mAuth.getCurrentUser().getUid();
+                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id);
+                                current_user_db.setValue(true);
                                 startActivity(new Intent(Activity_register.this, DriverLoginActivity.class));
                             }
                         }
                     });
-                } else {
-                    Toast.makeText(Activity_register.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
 
 
@@ -101,5 +104,14 @@ public class Activity_register extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(firebaseAuthListener);
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        mAuth.removeAuthStateListener(firebaseAuthListener);
+    }
 }
