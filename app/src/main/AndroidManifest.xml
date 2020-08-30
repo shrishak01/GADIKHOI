@@ -19,11 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_register_driver"/>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".Activity_register_driver" />
         <activity android:name=".DriverLoginActivity" />
         <activity android:name=".Activity_splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,7 +35,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent intent = new Intent(DriverLoginActivity.this, DriverLoginActivity.class);
+                    Intent intent = new Intent(DriverLoginActivity.this, MapActivity.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -39,11 +43,26 @@ public class DriverLoginActivity extends AppCompatActivity {
             }
         };
 
+
         username = (EditText) findViewById(R.id.username);
         password_login = (EditText) findViewById(R.id.password_login);
 
         button_signin = (Button) findViewById(R.id.button_signin);
-
+        button_signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String emailID = username.getText().toString();
+                String paswd = password_login.getText().toString();
+                mAuth.signInWithEmailAndPassword(emailID, paswd).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(DriverLoginActivity.this.getApplicationContext(), "Invalid Email or Password: Please check again", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
 
 
 
