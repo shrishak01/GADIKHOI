@@ -59,7 +59,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         txtSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DriverLoginActivity.this, Activity_register.class);
+                Intent i = new Intent(DriverLoginActivity.this, Activity_register_driver.class);
                 startActivity(i);
             }
         });
