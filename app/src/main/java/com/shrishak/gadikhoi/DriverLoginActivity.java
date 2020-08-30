@@ -57,8 +57,13 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String DEmail = username.getText().toString();
                 String DPaswd = password_login.getText().toString();
-
-                  if (DEmail.isEmpty() && DPaswd.isEmpty()) {
+                if (DEmail.isEmpty()) {
+                    username.setError("Enter email address");
+                    username.requestFocus();
+                } else if (DPaswd.isEmpty()) {
+                    password_login.setError("Enter Password!");
+                    password_login.requestFocus();
+                }else if (DEmail.isEmpty() && DPaswd.isEmpty()) {
                     Toast.makeText(DriverLoginActivity.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
                 } else if (!(DEmail.isEmpty() && DPaswd.isEmpty())) {
                     mAuth.signInWithEmailAndPassword(DEmail, DPaswd).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
