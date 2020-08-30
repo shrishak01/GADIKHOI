@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class DriverLoginActivity<txtsignup> extends AppCompatActivity {
+public class DriverLoginActivity extends AppCompatActivity {
  private EditText username, password_login;
  private Button button_signin;
  private TextView txtSignup;
