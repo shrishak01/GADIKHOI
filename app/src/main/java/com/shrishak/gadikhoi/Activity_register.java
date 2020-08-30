@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,10 +47,47 @@ public class Activity_register extends AppCompatActivity {
         res_password = (EditText) findViewById(R.id.res_password);
         res_check_password = (EditText) findViewById(R.id.res_check_password);
         email = (EditText) findViewById(R.id.email);
-        button_signup = (Button) findViewById(R.id.button_signUp);
         check_box = findViewById(R.id.chkBox1);
+        button_signup = (Button) findViewById(R.id.button_signUp);
 
-
+        button_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String emailID = email.getText().toString();
+                String paswd = res_password.getText().toString();
+                String conpaswd = res_check_password.getText().toString();
+                String user_name = res_username.getText().toString();
+                if (emailID.isEmpty()) {
+                    email.setError("Check your email");
+                    email.requestFocus();
+                } else if (paswd.isEmpty()) {
+                    res_password.setError("Set your password");
+                    res_password.requestFocus();
+                } else if (conpaswd.isEmpty()) {
+                    res_check_password.setError("Set the password");
+                    res_check_password.requestFocus();
+                } else if (user_name.isEmpty()) {
+                    res_username.setError("Set a username");
+                    res_username.requestFocus();
+                } else if (emailID.isEmpty() && paswd.isEmpty() && user_name.isEmpty() && conpaswd.isEmpty()) {
+                    Toast.makeText(Activity_register.this, "Please fill everything!", Toast.LENGTH_SHORT).show();
+                } else if (!(emailID.isEmpty() && paswd.isEmpty() && user_name.isEmpty() && conpaswd.isEmpty())){
+                    mAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(Activity_register.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(Activity_register.this.getApplicationContext(), "Signup unsuccesfull:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                String user_id =
+                                startActivity(new Intent(Activity_register.this, DriverLoginActivity.class));
+                            }
+                        }
+                    });
+                } else {
+                    Toast.makeText(Activity_register.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
 
