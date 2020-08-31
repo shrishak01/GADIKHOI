@@ -53,7 +53,7 @@ public class Activity_register_driver extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         check_box = findViewById(R.id.chkBox1);
         button_signup = (Button) findViewById(R.id.button_signUp);
-
+//registeration vayo
         button_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

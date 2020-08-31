@@ -51,7 +51,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         password_login = (EditText) findViewById(R.id.password_login);
 
         button_signin = (Button) findViewById(R.id.button_signin);
-
+//signin vako cha teak needed
         button_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +81,8 @@ public class DriverLoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         linearLayout2 = findViewById(R.id.linearLayout2);
         linearLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
