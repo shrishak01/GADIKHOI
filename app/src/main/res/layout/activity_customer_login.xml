@@ -44,7 +44,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="CUSTOMER LOGIN"
+                        android:text="PASSENGER LOGIN"
                         android:textColor="@color/white"
                         android:textSize="22sp" />
                 </LinearLayout>
