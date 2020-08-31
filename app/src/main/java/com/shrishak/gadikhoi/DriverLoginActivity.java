@@ -72,7 +72,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(DriverLoginActivity.this, "Not successful", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(DriverLoginActivity.this, MapActivity.class));
+                                startActivity(new Intent(DriverLoginActivity.this, DriverMapActivity.class));
                             }
                         }
                     });
