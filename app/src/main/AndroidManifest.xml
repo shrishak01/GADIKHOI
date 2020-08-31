@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".Activity_register_customer"></activity>
+        <activity android:name=".CustomerLoginActivity" />
+        <activity android:name=".MapActivity" />
         <activity android:name=".Activity_register_driver" />
         <activity android:name=".DriverLoginActivity" />
         <activity android:name=".Activity_splash">
