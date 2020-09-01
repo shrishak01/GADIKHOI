@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/logout"
         android:text="Logout"
-        android:background="@color/white"
-        /></androidx.cardview.widget.CardView>
+        android:background="@color/white" />
+    </androidx.cardview.widget.CardView>
 
     <fragment
         android:id="@+id/map"
