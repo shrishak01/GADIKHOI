@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,8 +60,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(CustomerMapActivity.this,MainActivity.class);
                 startActivity(i);
-                finish();
-
             }
         });
         mRequest = (Button) findViewById(R.id.Request);
@@ -72,7 +72,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
                 pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here"));
+                mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.here))));
 
                 mRequest.setText("Searching for Nearby Vehicles....");
             }
@@ -82,11 +82,15 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMinZoomPreference(15);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         buildGoogleApiClient();
         mMap.setMyLocationEnabled(true);
+
     }
     protected synchronized void buildGoogleApiClient(){
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -100,9 +104,11 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     public void onLocationChanged(@NonNull Location location) {
         mLastLocation = location;
 
+
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+
 
     }
 
