@@ -44,8 +44,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
-
         mLogout = (Button) findViewById(R.id.logout);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +54,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 Intent i = new Intent(DriverMapActivity.this,MainActivity.class);
                 startActivity(i);
                 finish();
-                return;
-
             }
         });
 
@@ -88,7 +86,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DriversAvailable");
-
         GeoFire geoFire = new GeoFire(ref);
         geoFire.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
     }
@@ -120,7 +117,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         super.onStop();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DriversAvailable");
-
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);
     }

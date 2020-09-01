@@ -36,7 +36,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent i = new Intent(CustomerLoginActivity.this, MapActivity.class);
+                    Intent i = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
                     startActivity(i);
                 }
             }
@@ -68,7 +68,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(CustomerLoginActivity.this, "Not successful", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(CustomerLoginActivity.this, MapActivity.class));
+                                startActivity(new Intent(CustomerLoginActivity.this, CustomerMapActivity.class));
                             }
                         }
                     });

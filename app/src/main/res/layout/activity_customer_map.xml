@@ -23,4 +23,18 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
+        map:cardCornerRadius="8dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Request"
+            android:text="Request nearby vehicle"
+            android:background="@color/white" />
+    </androidx.cardview.widget.CardView>
 </FrameLayout>
