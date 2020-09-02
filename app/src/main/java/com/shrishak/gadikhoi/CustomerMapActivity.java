@@ -84,15 +84,21 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
     private int radius = 1;
+    private Boolean driverFound = false;
+    private String driverFoundID;
     private void getClosestDriver(){
 
         DatabaseReference DriverLocation = FirebaseDatabase.getInstance().getReference().child("DriversAvailable");
         GeoFire geoFire = new GeoFire(DriverLocation);
         GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupLocation.latitude,pickupLocation.longitude), radius);
+        geoQuery.removeAllListeners();
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
-
+                if (!driverFound) {
+                    driverFound = true;
+                    driverFoundID = key;
+                }
             }
 
             @Override
@@ -107,7 +113,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
             @Override
             public void onGeoQueryReady() {
-
+                if(!driverFound){
+                    radius++;
+                    getClosestDriver();
+                }
             }
 
             @Override
