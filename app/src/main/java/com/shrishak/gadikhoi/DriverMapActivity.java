@@ -136,16 +136,34 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     }
     @Override
     public void onLocationChanged(@NonNull Location location) {
-    mLastLocation = location;
+        if (getApplicationContext() != null) {
+            mLastLocation = location;
 
-    LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-    mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference refAvailable = FirebaseDatabase.getInstance().getReference("driversAvailable");
+            DatabaseReference refWorking = FirebaseDatabase.getInstance().getReference("driversWorking");
+            GeoFire geoFireAvailable = new GeoFire(refAvailable);
+            GeoFire geoFireWorking = new GeoFire(refWorking);
 
-    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DriversAvailable");
-        GeoFire geoFire = new GeoFire(ref);
-        geoFire.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+            switch (customerId){
+                case "":
+                    geoFireWorking.removeLocation(userId);
+                    geoFireAvailable.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+                    break;
+                default:
+
+                    break;
+            }
+
+
+
+
+
+
+        }
     }
 
     @Override
@@ -174,7 +192,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     protected void onStop(){
         super.onStop();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DriversAvailable");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);
     }
