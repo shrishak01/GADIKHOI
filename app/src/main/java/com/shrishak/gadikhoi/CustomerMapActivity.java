@@ -161,6 +161,21 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                    if(mDriverMarker !=null){
                        mDriverMarker.remove();
                    }
+                   Location loc1 = new Location("");
+                   loc1.setLatitude(pickupLocation.latitude);
+                   loc1.setLongitude(pickupLocation.longitude);
+
+                   Location loc2 = new Location("");
+                   loc2.setLatitude(driverLatLng.latitude);
+                   loc2.setLongitude(driverLatLng.longitude);
+
+                   float distance = loc1.distanceTo(loc2);
+
+                   if(distance<100){
+                       mRequest.setText("Vehicle approaching you");
+                   }else {
+                       mRequest.setText("We have found a vehicle nearby:" + String.valueOf(distance) + "Meters");
+                   }
                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("Nearby Vehicle"));
                }
             }
