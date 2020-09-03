@@ -93,19 +93,20 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
                     GeoFire geoFire = new GeoFire(ref);
                     geoFire.removeLocation(userId);
                     if(pickupMarker !=null){
                         pickupMarker.remove();
 
                     }
+                    mRequest.setText("Request for Nearby Vehicle");
 
                 }else{
                     requestBol = true;
 
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
                     GeoFire geoFire = new GeoFire(ref);
                     geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
@@ -126,7 +127,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     GeoQuery geoQuery;
     private void getClosestDriver(){
 
-        DatabaseReference DriverLocation = FirebaseDatabase.getInstance().getReference().child("DriversAvailable");
+        DatabaseReference DriverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
         GeoFire geoFire = new GeoFire(DriverLocation);
         geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupLocation.latitude,pickupLocation.longitude), radius);
         geoQuery.removeAllListeners();
