@@ -52,6 +52,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private Button mLogout, mRequest;
     private LatLng pickupLocation;
     private Boolean requestBol = false;
+    private Marker pickupMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +79,31 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onClick(View view) {
 
                 if (requestBol){
+                    requestBol = false;
+                    geoQuery.removeAllListeners();
+                    driverLocationRef.removeEventListener(driverLocationRefListener);
 
+                    if(driverFoundID !=null){
+                        DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
+                        driverRef.setValue(true);
+                        driverFoundID = null;
+                    }
+                    driverFound = false;
+                    radius = 1;
+
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+                    GeoFire geoFire = new GeoFire(ref);
+                    geoFire.removeLocation(userId);
+                    if(pickupMarker !=null){
+                        pickupMarker.remove();
+
+                    }
 
                 }else{
+                    requestBol = true;
+
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
                     GeoFire geoFire = new GeoFire(ref);
@@ -110,7 +133,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
-                if (!driverFound) {
+                if (!driverFound && requestBol) {
                     driverFound = true;
                     driverFoundID = key;
 
@@ -150,12 +173,16 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
     private Marker mDriverMarker;
+
+    private DatabaseReference driverLocationRef;
+    private ValueEventListener driverLocationRefListener;
+
     private void getDriverLocation(){
-        DatabaseReference driverLocationRef = FirebaseDatabase.getInstance().getReference().child("driversWorking").child(driverFoundID).child("l");
-        driverLocationRef.addValueEventListener(new ValueEventListener() {
+        driverLocationRef = FirebaseDatabase.getInstance().getReference().child("driversWorking").child(driverFoundID).child("l");
+        driverLocationRefListener = driverLocationRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               if(dataSnapshot.exists()){
+               if(dataSnapshot.exists() &&requestBol){
                    List<Object> map = (List<Object>) dataSnapshot.getValue();
                    double locationLat = 0;
                    double locationLng = 0;
