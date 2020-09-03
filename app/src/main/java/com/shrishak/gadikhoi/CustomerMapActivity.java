@@ -111,7 +111,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
                     pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                    pickupMarker = mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here"));
+                    pickupMarker = mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
 
                     mRequest.setText("Searching for Nearby Vehicles....");
 
@@ -213,7 +213,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                    }else {
                        mRequest.setText("We have found a vehicle nearby:" + String.valueOf(distance) + "Meters");
                    }
-                   mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("Nearby Vehicle"));
+                   mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("Nearby Vehicle").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_vehicle)));
                }
             }
 
