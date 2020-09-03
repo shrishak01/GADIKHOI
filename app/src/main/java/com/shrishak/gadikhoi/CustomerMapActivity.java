@@ -110,7 +110,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
                     pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                    mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.here))));
+                    pickupMarker = mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.here))));
 
                     mRequest.setText("Searching for Nearby Vehicles....");
 
