@@ -61,8 +61,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isLoggingOut = true;
-                disconnectDriver();
+//                isLoggingOut = true;
+//                disconnectDriver();
                 FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(DriverMapActivity.this,MainActivity.class);
                 startActivity(i);
@@ -206,18 +206,18 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
     }
     private void disconnectDriver(){
-        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, (com.google.android.gms.location.LocationListener) this);
+//        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, (com.google.android.gms.location.LocationListener) this);
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);
     }
-    @Override
-    protected void onStop(){
-        super.onStop();
-        if(!isLoggingOut){
-            disconnectDriver();
-        }
-
-    }
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        if(!isLoggingOut){
+//            disconnectDriver();
+//        }
+//
+//    }
 }
