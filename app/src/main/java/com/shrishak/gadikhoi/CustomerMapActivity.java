@@ -51,6 +51,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private Button mLogout, mRequest;
     private LatLng pickupLocation;
+    private Boolean requestBol = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,28 +76,36 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
-                GeoFire geoFire = new GeoFire(ref);
-                geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
-                pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.here))));
+                if (requestBol){
 
-                mRequest.setText("Searching for Nearby Vehicles....");
 
-                getClosestDriver ();
+                }else{
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+                    GeoFire geoFire = new GeoFire(ref);
+                    geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+
+                    pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                    mMap.addMarker(new MarkerOptions(). position(pickupLocation).title("Im Here").icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.here))));
+
+                    mRequest.setText("Searching for Nearby Vehicles....");
+
+                    getClosestDriver ();
+                }
             }
         });
     }
     private int radius = 1;
     private Boolean driverFound = false;
     private String driverFoundID;
+
+    GeoQuery geoQuery;
     private void getClosestDriver(){
 
         DatabaseReference DriverLocation = FirebaseDatabase.getInstance().getReference().child("DriversAvailable");
         GeoFire geoFire = new GeoFire(DriverLocation);
-        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupLocation.latitude,pickupLocation.longitude), radius);
+        geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupLocation.latitude,pickupLocation.longitude), radius);
         geoQuery.removeAllListeners();
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
