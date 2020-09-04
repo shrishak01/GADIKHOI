@@ -33,13 +33,11 @@
         <activity android:name=".DriverLoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Activity_splash">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
     </application>

@@ -15,13 +15,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:maxWidth="10dp"
-        android:maxHeight="10dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/gadi" />
+
+        android:src="@mipmap/ic_gadi_foreground" />
 
     <TextView
         android:layout_width="match_parent"
