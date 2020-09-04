@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/logout"
             android:text="Logout"
-        android:background="@color/white" />
+            android:background="@color/white" />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -39,15 +39,16 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="5dp"
-        android:layout_gravity="bottom"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
         map:cardCornerRadius="8dp">
+
         <Button
+            android:id="@+id/Request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Request"
-            android:text="Request nearby vehicle"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:text="Request nearby vehicle" />
     </androidx.cardview.widget.CardView>
 </FrameLayout>
