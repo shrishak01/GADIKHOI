@@ -88,7 +88,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
         });
 
 
-        txtSignup = (TextView) findViewById(R.id.txtSignUp);
+        txtSignup = (TextView) findViewById(R.id.txtSignUpPassenger);
         txtSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

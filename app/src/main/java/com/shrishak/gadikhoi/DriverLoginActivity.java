@@ -92,7 +92,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         });
 
 
-        txtSignup = (TextView) findViewById(R.id.txtSignUp);
+        txtSignup = (TextView) findViewById(R.id.txtSignUpDriver);
         txtSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
