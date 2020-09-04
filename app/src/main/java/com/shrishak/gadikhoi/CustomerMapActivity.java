@@ -49,7 +49,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     Location mLastLocation;
     LocationRequest mLocationRequest;
 
-    private Button mLogout, mRequest;
+    private Button mLogout, mRequest, mSettings ;
     private LatLng pickupLocation;
     private Boolean requestBol = false;
     private Marker pickupMarker;
@@ -73,6 +73,16 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 startActivity(i);
             }
         });
+
+        mSettings = (Button) findViewById(R.id.settings);
+        mSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
+                startActivity(i);
+            }
+        });
+
         mRequest = (Button) findViewById(R.id.Request);
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,7 +238,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMinZoomPreference(15);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
