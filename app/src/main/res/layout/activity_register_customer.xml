@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_register_driver">
+    tools:context=".Activity_register_customer">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                         android:layout_marginBottom="20dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="PASSENGER  REGISTER"
+                        android:text="PASSENGER REGISTER"
                         android:textColor="@color/white"
                         android:textSize="22sp" />
 

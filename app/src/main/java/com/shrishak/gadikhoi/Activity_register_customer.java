@@ -32,7 +32,7 @@ public class Activity_register_customer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_registeration);
+        setContentView(R.layout.activity_driver_register);
 
         mAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -87,7 +87,7 @@ public class Activity_register_customer extends AppCompatActivity {
                                 String user_id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
                                 current_user_db.setValue(true);
-                                startActivity(new Intent(Activity_register_customer.this, DriverLoginActivity.class));
+                                startActivity(new Intent(Activity_register_customer.this, CustomerLoginActivity.class));
                             }
                         }
                     });
