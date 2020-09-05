@@ -61,12 +61,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="110sp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginLeft="130dp"
-                    android:layout_marginRight="130dp"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginRight="110dp"
                     android:id="@+id/profileImage"
                     android:src = "@drawable/user"
-                    android:layout_below="@+id/imageView1"
-                    app:tint="@color/primary">
+                    android:layout_below="@+id/imageView1">
 
                 </ImageView>
 
