@@ -57,11 +57,36 @@
                     android:rotation="45"
                     android:src="@drawable/square" />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="130dp"
+                    android:id="@+id/profileImage"
+                    android:src = "@drawable/user"
+                    android:layout_below="@+id/imageView1"
+                    app:tint="@color/primary">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileImage"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="-30dp"
+                    android:layout_marginRight="130dp"
+                    android:src="@drawable/user"
+                    android:text="PROFILE"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
                 <RelativeLayout
                     android:id="@+id/relativeLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageView1"
+                    android:layout_below="@+id/profileImage"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="30dp">
@@ -194,7 +219,7 @@
                     android:layout_below="@+id/relativeLayout4"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/btn_corner"
                     android:fontFamily="sans-serif-medium"
                     android:text="CONFIRM"
@@ -206,7 +231,7 @@
                     android:layout_below="@+id/back"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/btn_corner"
                     android:fontFamily="sans-serif-medium"
                     android:text="BACK"
