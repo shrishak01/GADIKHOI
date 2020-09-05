@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -54,40 +55,62 @@ public class CustomerSettingsActivity extends AppCompatActivity {
 
         getUserInfo();
 
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+
+            }
+        });
+
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
             }
         });
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
+
+
     }
 
-    private void getUserInfo(){
+    private void saveUserInformation() {
+            mName = mNameField.getText().toString();
+            mPhone = mPhoneField.getText().toString();
+            mLoc = mLocation.getText().toString();
+            mOcc = mOccupation.getText().toString();
+
+            Map<String, Object> userInfo = new HashMap<>();
+            userInfo.put("name", mName);
+            userInfo.put("phone", mPhone);
+            userInfo.put("location", mLoc);
+            userInfo.put("occupation", mOcc);
+            mCustomerDatabase.updateChildren(userInfo);
+            finish();
+            return;
+    }
+
+    private void getUserInfo() {
         mCustomerDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                    Map<String,Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
+                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                     assert map != null;
-                    if(map.get("name")!=null){
+                    if (map.get("name") != null) {
                         mName = Objects.requireNonNull(map.get("name")).toString();
                         mNameField.setText(mName);
                     }
-                    if(map.get("phone")!=null){
+                    if (map.get("phone") != null) {
                         mPhone = Objects.requireNonNull(map.get("phone")).toString();
                         mPhoneField.setText(mPhone);
                     }
-                    if(map.get("location")!=null){
+                    if (map.get("location") != null) {
                         mLoc = Objects.requireNonNull(map.get("location")).toString();
                         mLocation.setText(mLoc);
                     }
-                    if(map.get("occupation")!=null){
+                    if (map.get("occupation") != null) {
                         mOcc = Objects.requireNonNull(map.get("occupation")).toString();
                         mOccupation.setText(mOcc);
                     }
@@ -101,18 +124,5 @@ public class CustomerSettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void saveUserInformation() {
-        mName = mNameField.getText().toString();
-        mPhone = mPhoneField.getText().toString();
-        mLoc = mLocation.getText().toString();
-        mOcc = mOccupation.getText().toString();
 
-        Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("name", mName);
-        userInfo.put("phone", mPhone);
-        userInfo.put("location", mLoc);
-        userInfo.put("occupation", mOcc);
-        mCustomerDatabase.updateChildren(userInfo);
-        finish();
-    }
 }
