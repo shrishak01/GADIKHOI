@@ -240,6 +240,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        LatLng defaultMapView= new LatLng(27.706253, 85.330643);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultMapView));
+        mMap.setMinZoomPreference(12);
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
