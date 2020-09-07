@@ -23,7 +23,7 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="v.json"
         app:lottie_loop="true" />
-<!--        android:src="@drawable/gadi" />-->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
