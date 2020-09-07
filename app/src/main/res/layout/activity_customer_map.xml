@@ -13,7 +13,8 @@
         android:layout_height="match_parent" />
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="ExtraText">
         <androidx.cardview.widget.CardView
             android:id="@+id/mxo"
             android:layout_width="wrap_content"
@@ -42,20 +43,8 @@
                 android:background="@color/white" />
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/mxo"
-            map:cardCornerRadius="8dp"
-            android:layout_margin="5sp">
+<!--       Search will soon-->
 
-<!--        <fragment android:id="@+id/autocomplete_fragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="5sp"-->
-<!--            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"-->
-<!--            tools:ignore="MissingClass" />-->
-        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
 
