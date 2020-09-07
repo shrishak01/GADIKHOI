@@ -10,7 +10,7 @@ public class Activity_splash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_splashs);
+        setContentView(R.layout.activity_splashs);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

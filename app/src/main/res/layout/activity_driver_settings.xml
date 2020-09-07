@@ -229,15 +229,16 @@
                         android:src="@drawable/survey"
                         app:tint="@color/white" />
 
-                    <EditText
-                        android:id="@+id/occupation"
+                    <Spinner
+                        android:id="@+id/Type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imgView_emailIconx"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_emailIconx"
                         android:background="@drawable/corner_smooth"
-                        android:hint="Vehicle Number"
+                        android:hint="Vehicle Type"
+                        android:spinnerMode="dropdown"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
 
