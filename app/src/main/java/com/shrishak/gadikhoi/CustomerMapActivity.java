@@ -54,8 +54,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private Boolean requestBol = false;
     private Marker pickupMarker;
 
-    private  String destination;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,10 +82,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 startActivity(i);
             }
         });
-
-        
-
-
 
         mRequest = (Button) findViewById(R.id.Request);
         mRequest.setOnClickListener(new View.OnClickListener() {

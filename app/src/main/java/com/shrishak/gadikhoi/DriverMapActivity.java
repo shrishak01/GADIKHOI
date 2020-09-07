@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,9 +27,9 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -42,7 +43,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class DriverMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -51,12 +51,13 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     Location mLastLocation;
     LocationRequest mLocationRequest;
 
-    private Button mLogout;
+    private Button mLogout, mSettings;
     private String customerId = "";
     private boolean isLoggingOut = false;
     private LinearLayout mCustomerInfo;
     private ImageView mCustomerProfileImage;
     private TextView mCustomerName, mCustomerPhone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +78,15 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
 
 
+        mSettings = (Button) findViewById(R.id.settings);
+        mSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DriverMapActivity.this,DriverSettingsActivity.class);
+                startActivity(i);
 
-
+            }
+        });
 
         mLogout = (Button) findViewById(R.id.logout);
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -87,11 +95,12 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 //                isLoggingOut = true;
 //                disconnectDriver();
                 FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(DriverMapActivity.this,MainActivity.class);
+                Intent i = new Intent(DriverMapActivity.this,DriverMapActivity.class);
                 startActivity(i);
                 finish();
             }
         });
+
         getAssignedCustomer();
 
     }
@@ -223,7 +232,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             DatabaseReference refAvailable = FirebaseDatabase.getInstance().getReference("driversAvailable");
             DatabaseReference refWorking = FirebaseDatabase.getInstance().getReference("driversWorking");
@@ -279,7 +288,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);
     }
-//    @Override
+
+    //    @Override
 //    protected void onStop(){
 //        super.onStop();
 //        if(!isLoggingOut){
