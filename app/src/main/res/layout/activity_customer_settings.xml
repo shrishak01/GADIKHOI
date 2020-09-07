@@ -140,7 +140,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_passwordIcon"
                         android:background="@drawable/corner_smooth"
-                        android:hint="phone number"
+                        android:hint="Phone Number"
                         android:inputType="number"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />

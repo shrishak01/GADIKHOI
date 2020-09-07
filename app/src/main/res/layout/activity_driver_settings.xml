@@ -140,7 +140,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_passwordIcon"
                         android:background="@drawable/corner_smooth"
-                        android:hint="phone number"
+                        android:hint="Phone Number"
                         android:inputType="number"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
@@ -166,14 +166,14 @@
                         app:tint="@color/white" />
 
                     <EditText
-                        android:id="@+id/location"
+                        android:id="@+id/license"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imgView_repasswordIcon"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_repasswordIcon"
                         android:background="@drawable/corner_smooth"
-                        android:hint="Location"
+                        android:hint="License Number"
                         android:inputType="text"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
@@ -199,14 +199,45 @@
                         app:tint="@color/white" />
 
                     <EditText
-                        android:id="@+id/occupation"
+                        android:id="@+id/vehicle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imgView_emailIcon"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_emailIcon"
                         android:background="@drawable/corner_smooth"
-                        android:hint="Occupation"
+                        android:hint="Vehicle Number"
+                        android:paddingLeft="20dp"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relativeLayout4"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/imgView_emailIconx"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_corner"
+                        android:padding="8dp"
+                        android:src="@drawable/survey"
+                        app:tint="@color/white" />
+
+                    <EditText
+                        android:id="@+id/occupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/imgView_emailIconx"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/imgView_emailIconx"
+                        android:background="@drawable/corner_smooth"
+                        android:hint="Vehicle Number"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
 
@@ -215,7 +246,7 @@
                     android:id="@+id/back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/relativeLayout4"
+                    android:layout_below="@+id/relativeLayout5"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="30dp"
