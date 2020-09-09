@@ -9,6 +9,9 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +56,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private LatLng pickupLocation;
     private Boolean requestBol = false;
     private Marker pickupMarker;
+    private LinearLayout mDriverInfo;
+    private ImageView mDriverProfileImage;
+    private TextView mDriverName, mDriverPhone,mVehicleType,mVehicleNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,17 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+        mDriverInfo = (LinearLayout) findViewById(R.id.driverInfo);
+
+        mDriverProfileImage = (ImageView) findViewById(R.id.driverProfileImage);
+
+        mDriverName = (TextView) findViewById(R.id.driverName);
+        mDriverPhone = (TextView) findViewById(R.id.driverPhone);
+        mVehicleType = (TextView) findViewById(R.id.driverCar);
+        mVehicleNumber = (TextView) findViewById(R.id.vehicleNumber);
+
+
 
         mLogout = (Button) findViewById(R.id.logout);
         mLogout.setOnClickListener(new View.OnClickListener() {

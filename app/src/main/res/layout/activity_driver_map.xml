@@ -37,18 +37,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="20dp"
         map:cardCornerRadius="8dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/customerInfo"
-        android:layout_margin="2dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:background="@color/darkMode"
-        android:visibility="gone">
+        android:visibility="visible">
         <ImageView
             android:layout_width="100sp"
             android:layout_height="100sp"
@@ -59,19 +61,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="40sp">
+            android:paddingTop="20sp"
+            android:paddingLeft="1sp">
+
             <TextView
+                android:id="@+id/customerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/customerName"
-                android:paddingBottom="10sp"
-                android:paddingTop="20sp"/>
+                android:hint="Customer Name" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/customerPhone"
-                android:paddingBottom="10sp"
-                android:paddingTop="20sp"/>
+                android:hint="Customer Phone"
+                android:paddingTop="20sp" />
 
 
         </LinearLayout>
