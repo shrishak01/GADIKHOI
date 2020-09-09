@@ -120,7 +120,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
         userInfo.put("license number", mLic);
         userInfo.put("vehicle number", mVec);
         userInfo.put("vehicle type", mTyp);
-        mCustomerDatabase.updateChildren(userInfo);
+        mDriverDatabase.updateChildren(userInfo);
         if(resultUri !=null){
             final StorageReference filePath = FirebaseStorage.getInstance().getReference().child("profile_images").child(userID);
             Bitmap bitmap = null;
@@ -143,7 +143,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             Map newImage = new HashMap();
                             newImage.put("profileImageUrl", uri.toString());
-                            mCustomerDatabase.updateChildren(newImage);
+                            mDriverDatabase.updateChildren(newImage);
 
                             finish();
                             return;
@@ -164,7 +164,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
     }
 
     private void getUserInfo() {
-        mCustomerDatabase.addValueEventListener(new ValueEventListener() {
+        mDriverDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
