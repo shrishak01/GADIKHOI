@@ -226,10 +226,10 @@
                         android:layout_height="40dp"
                         android:background="@drawable/btn_corner"
                         android:padding="8dp"
-                        android:src="@drawable/survey"
+                        android:src="@drawable/bus"
                         app:tint="@color/white" />
 
-                    <Spinner
+                    <EditText
                         android:id="@+id/Type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -238,7 +238,6 @@
                         android:layout_toRightOf="@+id/imgView_emailIconx"
                         android:background="@drawable/corner_smooth"
                         android:hint="Vehicle Type"
-                        android:spinnerMode="dropdown"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
 

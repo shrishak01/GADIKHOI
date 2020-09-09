@@ -12,6 +12,8 @@ public class DriverSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_settings);
+
+
         Spinner dropdown = findViewById(R.id.Type);
         String[] items = new String[]{"Bus", "Car", "MotorBike"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
