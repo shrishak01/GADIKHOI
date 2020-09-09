@@ -230,14 +230,14 @@
                         app:tint="@color/white" />
 
                     <EditText
-                        android:id="@+id/Type"
+                        android:id="@+id/type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/imgView_emailIconx"
                         android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/imgView_emailIconx"
                         android:background="@drawable/corner_smooth"
-                        android:hint="Vehicle Type"
+                        android:hint="Vehicle Type '{Car|Bus|Motorbike}'"
                         android:paddingLeft="20dp"
                         android:textSize="15sp" />
 
